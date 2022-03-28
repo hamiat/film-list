@@ -1,3 +1,3 @@
-��#� �f�i�l�m�-�l�i�s�t�
+A simple Film list app.
 
 Created with JavaScript and Bootstrap 
