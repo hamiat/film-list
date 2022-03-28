@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3f78275697.js" crossorigin="anonymous"></script>
+    <title>Film list</title>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1 class="display-4 text-center"> <i class="fas fa-film text-primary"></i> My <span class="text-primary">Film</span> list</h1>
+        <from id="book-form">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="Year">Year</label>
+                <input type="text" id="Year" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="thoughts">Thoughts</label>
+               <textarea id="thoughts" class="form-control"  > </textarea>
+            </div>
+            <input type="submit" value="Add Film" class="btn btn-primary btn-block">
+        </from>
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Thoughts</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="film-list"></tbody>
+        </table>
+
+    </div>
+ <script src="app.js"></script>   
+</body>
+</html>
