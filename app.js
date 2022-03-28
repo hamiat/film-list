@@ -23,7 +23,7 @@ class UI {
       },
     ];
 
-    const films = storedFilms;
+    const films = Store.getFilms();
     films.forEach((film) => UI.addFilmToList(film));
   }
   static addFilmToList(film) {
@@ -73,15 +73,32 @@ class UI {
 //Store Class : handle storage
 class Store{
     static getFilms() {
+        let films;
+        if(localStorage.getItem("films") === null) {
+            films = [];
+        } else {
+            films = JSON.parse(localStorage.getItem("films"));  
+        }
+        return films;
 
     }
 
     static addFilm(film) {
-
+        const films = Store.getFilms();
+        films.push(film);
+        localStorage.setItem("films", JSON.stringify(films));
     }
 
-    static removeFilm(film) {
+    static removeFilm(title) {
+        const films = Store.getFilms();
 
+        films.forEach((film, index) => {
+            if(film.title === title) {
+               films.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem("films", JSON.stringify(films));
     }
 }
 
@@ -90,6 +107,8 @@ document.addEventListener("DOMContentLoaded", UI.displayFilms);
 
 /****Event: Add a book******/
 document.querySelector("#film-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+
   //get values
   const title = document.querySelector("#title").value;
   const year = document.querySelector("#year").value;
@@ -106,6 +125,9 @@ document.querySelector("#film-form").addEventListener("submit", (e) => {
     //Add film to UI
     UI.addFilmToList(film);
 
+    //Add film to store (local storage) 
+    Store.addFilm(film);
+
     //Show success message
     //using the showAlert method when validation IS successful to display the message below and add bootstrap class to (the created  element (div))
     UI.showAlert("Film Added!", "success")
@@ -118,6 +140,11 @@ document.querySelector("#film-form").addEventListener("submit", (e) => {
 /****Event: Remove a book******/
 //film-list created in addFilmToList()
 document.querySelector("#film-list").addEventListener("click", (e) => {
+    //remove film from UI
   UI.deleteFilm(e.target);
+
+  //remove book from store
+UI.removeFilm(e.target.preventElementSibling.textContent)
+
   UI.showAlert("Film removed!", "success")
 });
