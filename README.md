@@ -1,3 +1,3 @@
 A simple Film list app.
 
-Created with JavaScript and Bootstrap 
+Created with JavaScript and Bootstrap.
