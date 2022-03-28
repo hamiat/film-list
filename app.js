@@ -89,6 +89,7 @@ class Store{
         localStorage.setItem("films", JSON.stringify(films));
     }
 
+    /* //this part is not working
     static removeFilm(title) {
         const films = Store.getFilms();
 
@@ -99,7 +100,7 @@ class Store{
         });
 
         localStorage.setItem("films", JSON.stringify(films));
-    }
+    } */
 }
 
 /****Event: Display films ******/
@@ -143,8 +144,11 @@ document.querySelector("#film-list").addEventListener("click", (e) => {
     //remove film from UI
   UI.deleteFilm(e.target);
 
-  //remove book from store
-UI.removeFilm(e.target.preventElementSibling.textContent)
-
   UI.showAlert("Film removed!", "success")
+
+  /* //this part is not working
+  //remove book from store
+UI.removeFilm(e.target.parentElement.previousElementSibling.textContent)
+
+*/
 });
